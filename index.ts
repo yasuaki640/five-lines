@@ -201,12 +201,8 @@ function updateTitle(y: number, x: number) {
 function handleInputs() {
   while (inputs.length > 0) {
     let current = inputs.pop();
-    handleInput(current);
+    current.handle();
   }
-}
-
-function handleInput(input: Input) {
-  input.handle();
 }
 
 function CreateGraphics() {
