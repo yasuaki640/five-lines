@@ -118,7 +118,7 @@ function CreateGraphics() {
 
   g.clearRect(0, 0, canvas.width, canvas.height);
   return g;
-}
+} 
 
 function draw() {
   let g = CreateGraphics();
@@ -127,6 +127,10 @@ function draw() {
   drawMap(g)
 
   // Draw player
+  drawPlayer(g);
+}
+
+function drawPlayer(g: CanvasRenderingContext2D) {
   g.fillStyle = "#ff0000";
   g.fillRect(playerx * TILE_SIZE, playery * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 }
