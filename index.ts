@@ -634,7 +634,7 @@ function moveHorizontal(dx: number) {
     removeLock1();
     moveToTile(playerx + dx, playery);
   } else if (map[playery][playerx + dx].isKey2()) {
-    remove(new Lock2());
+    removeLock2();
     moveToTile(playerx + dx, playery);
   }
 }
@@ -643,10 +643,10 @@ function moveVertical(dy: number) {
   if (map[playery + dy][playerx].isFlux() || map[playery + dy][playerx].isAir()) {
     moveToTile(playerx, playery + dy);
   } else if (map[playery + dy][playerx].isKey1()) {
-    remove(new Lock1());
+    removeLock1();
     moveToTile(playerx, playery + dy);
   } else if (map[playery + dy][playerx].isKey2()) {
-    remove(new Lock2());
+    removeLock2();
     moveToTile(playerx, playery + dy);
   }
 }
