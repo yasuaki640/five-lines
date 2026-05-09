@@ -74,7 +74,6 @@ class Air implements Tile {
   color(g: CanvasRenderingContext2D) {
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
-    this.color(g);
     if (!this.isAir() && !this.isPlayer())
       g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
@@ -121,7 +120,7 @@ class Flux implements Tile {
     g.fillStyle = "#ccffcc";
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
-    this.color(g);
+    g.fillStyle = "#ccffcc";
     if (!this.isAir() && !this.isPlayer())
       g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
@@ -168,7 +167,7 @@ class Unbreakable implements Tile {
     g.fillStyle = "#999999";
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
-    this.color(g);
+    g.fillStyle = "#999999";
     if (!this.isAir() && !this.isPlayer())
       g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
@@ -214,7 +213,6 @@ class Player implements Tile {
   color(g: CanvasRenderingContext2D) {
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
-    this.color(g);
     if (!this.isAir() && !this.isPlayer())
       g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
@@ -261,7 +259,7 @@ class Stone implements Tile {
     g.fillStyle = "#0000cc";
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
-    this.color(g);
+    g.fillStyle = "#0000cc";
     if (!this.isAir() && !this.isPlayer())
       g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
@@ -308,7 +306,7 @@ class FallingStone implements Tile {
     g.fillStyle = "#0000cc";
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
-    this.color(g);
+    g.fillStyle = "#0000cc";
     if (!this.isAir() && !this.isPlayer())
       g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
@@ -355,7 +353,7 @@ class Box implements Tile {
     g.fillStyle = "#8b4513";
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
-    this.color(g);
+    g.fillStyle = "#8b4513";
     if (!this.isAir() && !this.isPlayer())
       g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
@@ -402,7 +400,7 @@ class FallingBox implements Tile {
     g.fillStyle = "#8b4513";
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
-    this.color(g);
+    g.fillStyle = "#8b4513";
     if (!this.isAir() && !this.isPlayer())
       g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
@@ -449,7 +447,7 @@ class Key1 implements Tile {
     g.fillStyle = "#ffcc00";
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
-    this.color(g);
+    g.fillStyle = "#ffcc00";
     if (!this.isAir() && !this.isPlayer())
       g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
@@ -496,7 +494,7 @@ class Lock1 implements Tile {
     g.fillStyle = "#ffcc00";
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
-    this.color(g);
+    g.fillStyle = "#ffcc00";
     if (!this.isAir() && !this.isPlayer())
       g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
@@ -543,7 +541,7 @@ class Key2 implements Tile {
     g.fillStyle = "#00ccff";
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
-    this.color(g);
+    g.fillStyle = "#00ccff";
     if (!this.isAir() && !this.isPlayer())
       g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
@@ -590,7 +588,7 @@ class Lock2 implements Tile {
     g.fillStyle = "#00ccff";
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
-    this.color(g);
+    g.fillStyle = "#00ccff";
     if (!this.isAir() && !this.isPlayer())
       g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
