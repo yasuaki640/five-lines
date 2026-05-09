@@ -42,7 +42,36 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 9. **Do Not Use Getters Or Setters** — データを「尋ねる」のではなく「振る舞いを依頼する」(Tell, Don't Ask)
 10. **Never Have Common Affixes** — 共通の接頭辞・接尾辞は冗長 (`AbstractFooImpl` のような命名を避ける)
 
-第3章 = ルール 1〜3、第4章 = ルール 4〜6、以降の章で残りが順次導入される（厳密な対応は書籍参照）。
+ルールが導入される章は以下の通り（PDF 目次より）:
+
+| 章 | 導入されるルール |
+|----|------|
+| 第3章 Shatter long functions | Rule 1 Five Lines / Rule 2 Either Call Or Pass / Rule 3 If Only At The Start |
+| 第4章 Make type codes work | Rule 4 Never Use If With Else / Rule 5 Never Use Switch / Rule 6 Only Inherit From Interfaces |
+| 第5章 Fuse similar code together | Rule 7 Use Pure Conditions / Rule 8 No Interface With Only One Implementation |
+| 第6章 Defend the data | Rule 9 Do Not Use Getters Or Setters / Rule 10 Never Have Common Affixes（書籍参照で要確認） |
+
+### 書籍が提示するリファクタリングパターン（第1部）
+
+ルールは「何が悪いか」を判定し、パターンは「どう直すか」を与える。第1部 (3〜6章) で導入されるパターンは以下（書籍 inside front cover より）:
+
+| 章 | パターン名 | 1行説明 |
+|----|----------|--------|
+| 3章 | Extract Method | 関数の一部を別関数へ抽出 |
+| 4章 | Replace Type Code With Classes | enum をインターフェース＋クラス群に変換 |
+| 4章 | Push Code Into Classes | 振る舞いをクラスに移す（Replace Type Code の自然な続き） |
+| 4章 | Inline Method | 可読性に寄与しなくなった関数を展開 |
+| 4章 | Specialize Method | 不要な汎用性を取り除く |
+| 4章 | Try Delete Then Compile | スコープが分かっている未使用メソッドを削除 |
+| 5章 | Unify Similar Classes | 定数メソッド差分のクラス群を統合 |
+| 5章 | Combine Ifs | 同一本体の連続 if を結合 |
+| 5章 | Introduce Strategy Pattern | if による分岐をクラスのインスタンス化に置換 |
+| 5章 | Extract Interface From Implementation | クラス依存をインターフェース依存へ |
+| 6章 | Eliminate Getter Or Setter | データに振る舞いを寄せて getter/setter を消す |
+| 6章 | Encapsulate Data | 変数に関わる不変条件を局所化 |
+| 6章 | Enforce Sequence | 実行順序をコンパイラに保証させる |
+
+コミットメッセージにはルール番号とパターン名の両方を含める（後述「コミット運用」参照）。
 
 ## 開発コマンド
 
@@ -73,6 +102,19 @@ npm run serve                   # python3 -m http.server 8080（http://localhost
 書籍は **「1ステップ = 1リファクタリングパターン適用 = 即コミット」** という非常に細かい粒度を推奨する。Claude が複数のルール違反を一気に直そうとすると学習価値が下がる。**ユーザーが章/ルールを指定したら、その範囲だけを最小限に変更し、コミット単位を分けやすい形で提示する**こと。
 
 例: 「第3章のルール 1 (Five Lines) を `moveHorizontal` に適用して」と言われたら、Extract Method を1〜2回行うだけで止め、別のルール違反は触らない。
+
+具体的な良い例 / 悪い例:
+
+- 悪い例: 「Extract Method ついでに `playerx` を `playerX` にリネーム」→ 1コミットが2つの目的を持ち、書籍の段階追従が崩れる
+- 良い例: Extract Method のみ実施 → コミット → 次の指示で rename を別コミット
+
+### Claude のリファクタリング進行ワークフロー
+
+1. **提案前にルール宣言**: 変更を提案する際、適用するルール番号とパターン名を先に書く（コミットメッセージと同じ語彙）
+2. **1ステップ = 1パターン = 1コミット**: Extract Method の最中に、変数リネーム / 型注釈追加 / 別ルール違反の修正 を混ぜない。`diff` を最小に保つ
+3. **振る舞いを変えない**: スクリーンショット (`game.png`, `goal.png`) と同じ動作を維持
+4. **次のスメル示唆は1個まで**: 1コミット完了時、副作用として見えるようになった次のスメルを **1個だけ** 言及してよい。ただし手は出さない（ユーザーが指示するまで待つ）
+5. **能動的に直し始めない**: ユーザーが章/ルール/対象関数を指定するまで、Claude 側からスメル除去を開始しない
 
 ### 既知のスメル一覧（リファクタ対象の地図）
 
