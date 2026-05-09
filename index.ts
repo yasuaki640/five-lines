@@ -33,186 +33,472 @@ interface Tile2 {
 }
 
 class Air implements Tile2 {
-  isFlux() { return false; }
-  isUnbreakable() { return false; }
-  isPlayer() { return false; }
-  isStone() { return false; }
-  isFallingStone() { return false; }
-  isBox() { return false; }
-  isFallingBox() { return false; }
-  isKey1() { return false; }
-  isLock1() { return false; }
-  isKey2() { return false; }
-  isLock2() { return false; }
-  isAir() { return true; }
+  isFlux() {
+    return false;
+  }
+  isUnbreakable() {
+    return false;
+  }
+  isPlayer() {
+    return false;
+  }
+  isStone() {
+    return false;
+  }
+  isFallingStone() {
+    return false;
+  }
+  isBox() {
+    return false;
+  }
+  isFallingBox() {
+    return false;
+  }
+  isKey1() {
+    return false;
+  }
+  isLock1() {
+    return false;
+  }
+  isKey2() {
+    return false;
+  }
+  isLock2() {
+    return false;
+  }
+  isAir() {
+    return true;
+  }
 }
 
 class Flux implements Tile2 {
-  isFlux() { return true; }
-  isUnbreakable() { return false; }
-  isPlayer() { return false; }
-  isStone() { return false; }
-  isFallingStone() { return false; }
-  isBox() { return false; }
-  isFallingBox() { return false; }
-  isKey1() { return false; }
-  isLock1() { return false; }
-  isKey2() { return false; }
-  isLock2() { return false; }
-  isAir() { return false; }
+  isFlux() {
+    return true;
+  }
+  isUnbreakable() {
+    return false;
+  }
+  isPlayer() {
+    return false;
+  }
+  isStone() {
+    return false;
+  }
+  isFallingStone() {
+    return false;
+  }
+  isBox() {
+    return false;
+  }
+  isFallingBox() {
+    return false;
+  }
+  isKey1() {
+    return false;
+  }
+  isLock1() {
+    return false;
+  }
+  isKey2() {
+    return false;
+  }
+  isLock2() {
+    return false;
+  }
+  isAir() {
+    return false;
+  }
 }
 
 class Unbreakable implements Tile2 {
-  isFlux() { return false; }
-  isUnbreakable() { return true; }
-  isPlayer() { return false; }
-  isStone() { return false; }
-  isFallingStone() { return false; }
-  isBox() { return false; }
-  isFallingBox() { return false; }
-  isKey1() { return false; }
-  isLock1() { return false; }
-  isKey2() { return false; }
-  isLock2() { return false; }
-  isAir() { return false; }
+  isFlux() {
+    return false;
+  }
+  isUnbreakable() {
+    return true;
+  }
+  isPlayer() {
+    return false;
+  }
+  isStone() {
+    return false;
+  }
+  isFallingStone() {
+    return false;
+  }
+  isBox() {
+    return false;
+  }
+  isFallingBox() {
+    return false;
+  }
+  isKey1() {
+    return false;
+  }
+  isLock1() {
+    return false;
+  }
+  isKey2() {
+    return false;
+  }
+  isLock2() {
+    return false;
+  }
+  isAir() {
+    return false;
+  }
 }
 
 class Player implements Tile2 {
-  isFlux() { return false; }
-  isUnbreakable() { return false; }
-  isPlayer() { return true; }
-  isStone() { return false; }
-  isFallingStone() { return false; }
-  isBox() { return false; }
-  isFallingBox() { return false; }
-  isKey1() { return false; }
-  isLock1() { return false; }
-  isKey2() { return false; }
-  isLock2() { return false; }
-  isAir() { return false; }
+  isFlux() {
+    return false;
+  }
+  isUnbreakable() {
+    return false;
+  }
+  isPlayer() {
+    return true;
+  }
+  isStone() {
+    return false;
+  }
+  isFallingStone() {
+    return false;
+  }
+  isBox() {
+    return false;
+  }
+  isFallingBox() {
+    return false;
+  }
+  isKey1() {
+    return false;
+  }
+  isLock1() {
+    return false;
+  }
+  isKey2() {
+    return false;
+  }
+  isLock2() {
+    return false;
+  }
+  isAir() {
+    return false;
+  }
 }
 
 class Stone implements Tile2 {
-  isFlux() { return false; }
-  isUnbreakable() { return false; }
-  isPlayer() { return false; }
-  isStone() { return true; }
-  isFallingStone() { return false; }
-  isBox() { return false; }
-  isFallingBox() { return false; }
-  isKey1() { return false; }
-  isLock1() { return false; }
-  isKey2() { return false; }
-  isLock2() { return false; }
-  isAir() { return false; }
+  isFlux() {
+    return false;
+  }
+  isUnbreakable() {
+    return false;
+  }
+  isPlayer() {
+    return false;
+  }
+  isStone() {
+    return true;
+  }
+  isFallingStone() {
+    return false;
+  }
+  isBox() {
+    return false;
+  }
+  isFallingBox() {
+    return false;
+  }
+  isKey1() {
+    return false;
+  }
+  isLock1() {
+    return false;
+  }
+  isKey2() {
+    return false;
+  }
+  isLock2() {
+    return false;
+  }
+  isAir() {
+    return false;
+  }
 }
 
 class FallingStone implements Tile2 {
-  isFlux() { return false; }
-  isUnbreakable() { return false; }
-  isPlayer() { return false; }
-  isStone() { return false; }
-  isFallingStone() { return true; }
-  isBox() { return false; }
-  isFallingBox() { return false; }
-  isKey1() { return false; }
-  isLock1() { return false; }
-  isKey2() { return false; }
-  isLock2() { return false; }
-  isAir() { return false; }
+  isFlux() {
+    return false;
+  }
+  isUnbreakable() {
+    return false;
+  }
+  isPlayer() {
+    return false;
+  }
+  isStone() {
+    return false;
+  }
+  isFallingStone() {
+    return true;
+  }
+  isBox() {
+    return false;
+  }
+  isFallingBox() {
+    return false;
+  }
+  isKey1() {
+    return false;
+  }
+  isLock1() {
+    return false;
+  }
+  isKey2() {
+    return false;
+  }
+  isLock2() {
+    return false;
+  }
+  isAir() {
+    return false;
+  }
 }
 
 class Box implements Tile2 {
-  isFlux() { return false; }
-  isUnbreakable() { return false; }
-  isPlayer() { return false; }
-  isStone() { return false; }
-  isFallingStone() { return false; }
-  isBox() { return true; }
-  isFallingBox() { return false; }
-  isKey1() { return false; }
-  isLock1() { return false; }
-  isKey2() { return false; }
-  isLock2() { return false; }
-  isAir() { return false; }
+  isFlux() {
+    return false;
+  }
+  isUnbreakable() {
+    return false;
+  }
+  isPlayer() {
+    return false;
+  }
+  isStone() {
+    return false;
+  }
+  isFallingStone() {
+    return false;
+  }
+  isBox() {
+    return true;
+  }
+  isFallingBox() {
+    return false;
+  }
+  isKey1() {
+    return false;
+  }
+  isLock1() {
+    return false;
+  }
+  isKey2() {
+    return false;
+  }
+  isLock2() {
+    return false;
+  }
+  isAir() {
+    return false;
+  }
 }
 
 class FallingBox implements Tile2 {
-  isFlux() { return false; }
-  isUnbreakable() { return false; }
-  isPlayer() { return false; }
-  isStone() { return false; }
-  isFallingStone() { return false; }
-  isBox() { return false; }
-  isFallingBox() { return true; }
-  isKey1() { return false; }
-  isLock1() { return false; }
-  isKey2() { return false; }
-  isLock2() { return false; }
-  isAir() { return false; }
+  isFlux() {
+    return false;
+  }
+  isUnbreakable() {
+    return false;
+  }
+  isPlayer() {
+    return false;
+  }
+  isStone() {
+    return false;
+  }
+  isFallingStone() {
+    return false;
+  }
+  isBox() {
+    return false;
+  }
+  isFallingBox() {
+    return true;
+  }
+  isKey1() {
+    return false;
+  }
+  isLock1() {
+    return false;
+  }
+  isKey2() {
+    return false;
+  }
+  isLock2() {
+    return false;
+  }
+  isAir() {
+    return false;
+  }
 }
 
 class Key1 implements Tile2 {
-  isFlux() { return false; }
-  isUnbreakable() { return false; }
-  isPlayer() { return false; }
-  isStone() { return false; }
-  isFallingStone() { return false; }
-  isBox() { return false; }
-  isFallingBox() { return false; }
-  isKey1() { return true; }
-  isLock1() { return false; }
-  isKey2() { return false; }
-  isLock2() { return false; }
-  isAir() { return false; }
+  isFlux() {
+    return false;
+  }
+  isUnbreakable() {
+    return false;
+  }
+  isPlayer() {
+    return false;
+  }
+  isStone() {
+    return false;
+  }
+  isFallingStone() {
+    return false;
+  }
+  isBox() {
+    return false;
+  }
+  isFallingBox() {
+    return false;
+  }
+  isKey1() {
+    return true;
+  }
+  isLock1() {
+    return false;
+  }
+  isKey2() {
+    return false;
+  }
+  isLock2() {
+    return false;
+  }
+  isAir() {
+    return false;
+  }
 }
 
 class Lock1 implements Tile2 {
-  isFlux() { return false; }
-  isUnbreakable() { return false; }
-  isPlayer() { return false; }
-  isStone() { return false; }
-  isFallingStone() { return false; }
-  isBox() { return false; }
-  isFallingBox() { return false; }
-  isKey1() { return false; }
-  isLock1() { return true; }
-  isKey2() { return false; }
-  isLock2() { return false; }
-  isAir() { return false; }
+  isFlux() {
+    return false;
+  }
+  isUnbreakable() {
+    return false;
+  }
+  isPlayer() {
+    return false;
+  }
+  isStone() {
+    return false;
+  }
+  isFallingStone() {
+    return false;
+  }
+  isBox() {
+    return false;
+  }
+  isFallingBox() {
+    return false;
+  }
+  isKey1() {
+    return false;
+  }
+  isLock1() {
+    return true;
+  }
+  isKey2() {
+    return false;
+  }
+  isLock2() {
+    return false;
+  }
+  isAir() {
+    return false;
+  }
 }
 
 class Key2 implements Tile2 {
-  isFlux() { return false; }
-  isUnbreakable() { return false; }
-  isPlayer() { return false; }
-  isStone() { return false; }
-  isFallingStone() { return false; }
-  isBox() { return false; }
-  isFallingBox() { return false; }
-  isKey1() { return false; }
-  isLock1() { return false; }
-  isKey2() { return true; }
-  isLock2() { return false; }
-  isAir() { return false; }
+  isFlux() {
+    return false;
+  }
+  isUnbreakable() {
+    return false;
+  }
+  isPlayer() {
+    return false;
+  }
+  isStone() {
+    return false;
+  }
+  isFallingStone() {
+    return false;
+  }
+  isBox() {
+    return false;
+  }
+  isFallingBox() {
+    return false;
+  }
+  isKey1() {
+    return false;
+  }
+  isLock1() {
+    return false;
+  }
+  isKey2() {
+    return true;
+  }
+  isLock2() {
+    return false;
+  }
+  isAir() {
+    return false;
+  }
 }
 
 class Lock2 implements Tile2 {
-  isFlux() { return false; }
-  isUnbreakable() { return false; }
-  isPlayer() { return false; }
-  isStone() { return false; }
-  isFallingStone() { return false; }
-  isBox() { return false; }
-  isFallingBox() { return false; }
-  isKey1() { return false; }
-  isLock1() { return false; }
-  isKey2() { return false; }
-  isLock2() { return true; }
-  isAir() { return false; }
+  isFlux() {
+    return false;
+  }
+  isUnbreakable() {
+    return false;
+  }
+  isPlayer() {
+    return false;
+  }
+  isStone() {
+    return false;
+  }
+  isFallingStone() {
+    return false;
+  }
+  isBox() {
+    return false;
+  }
+  isFallingBox() {
+    return false;
+  }
+  isKey1() {
+    return false;
+  }
+  isLock1() {
+    return false;
+  }
+  isKey2() {
+    return false;
+  }
+  isLock2() {
+    return true;
+  }
+  isAir() {
+    return false;
+  }
 }
-
-
 
 interface Input {
   isRight(): boolean;
@@ -307,10 +593,20 @@ let map: Tile2[][] = [
 
 let inputs: Input[] = [];
 
-function remove(tile: Tile) {
+function removeLock1() {
   for (let y = 0; y < map.length; y++) {
     for (let x = 0; x < map[y].length; x++) {
-      if (map[y][x] === tile) {
+      if (map[y][x].isLock1()) {
+        map[y][x] = new Air();
+      }
+    }
+  }
+}
+
+function removeLock2() {
+  for (let y = 0; y < map.length; y++) {
+    for (let x = 0; x < map[y].length; x++) {
+      if (map[y][x].isLock2()) {
         map[y][x] = new Air();
       }
     }
@@ -335,7 +631,7 @@ function moveHorizontal(dx: number) {
     map[playery][playerx + dx + dx] = map[playery][playerx + dx];
     moveToTile(playerx + dx, playery);
   } else if (map[playery][playerx + dx].isKey1()) {
-    remove(new Lock1());
+    removeLock1();
     moveToTile(playerx + dx, playery);
   } else if (map[playery][playerx + dx].isKey2()) {
     remove(new Lock2());
@@ -369,16 +665,10 @@ function updateMap() {
 }
 
 function updateTitle(y: number, x: number) {
-  if (
-    (map[y][x].isStone() || map[y][x].isFallingStone()) &&
-    map[y + 1][x].isAir()
-  ) {
+  if ((map[y][x].isStone() || map[y][x].isFallingStone()) && map[y + 1][x].isAir()) {
     map[y + 1][x] = new FallingStone();
     map[y][x] = new Air();
-  } else if (
-    (map[y][x].isBox() || map[y][x].isFallingBox()) &&
-    map[y + 1][x].isAir()
-  ) {
+  } else if ((map[y][x].isBox() || map[y][x].isFallingBox()) && map[y + 1][x].isAir()) {
     map[y + 1][x] = new FallingBox();
     map[y][x] = new Air();
   } else if (map[y][x].isFallingStone()) {
