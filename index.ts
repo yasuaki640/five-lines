@@ -811,9 +811,9 @@ function moveHorizontal(dx: number) {
   if (map[playery][playerx + dx].isEdible()) {
     moveToTile(playerx + dx, playery);
   } else if (
-    (map[playery][playerx + dx].isStone() || map[playery][playerx + dx].isBox()) &&
-    map[playery][playerx + dx + dx].isAir() &&
-    !map[playery + 1][playerx + dx].isAir()
+    map[playery][playerx + dx].isPushable()
+    && map[playery][playerx + dx + dx].isAir()
+    && !map[playery + 1][playerx + dx].isAir()
   ) {
     map[playery][playerx + dx + dx] = map[playery][playerx + dx];
     moveToTile(playerx + dx, playery);
