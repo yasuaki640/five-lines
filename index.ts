@@ -30,6 +30,7 @@ interface Tile {
   isKey2(): boolean;
   isLock2(): boolean;
   isAir(): boolean;
+  isEdible(): boolean;
   color(g: CanvasRenderingContext2D): void;
   draw(g: CanvasRenderingContext2D, x: number, y: number): void;
 }
@@ -70,6 +71,9 @@ class Air implements Tile {
   }
   isAir() {
     return true;
+  }
+  isEdible() {
+    return this.isFlux() || this.isAir();
   }
   color(g: CanvasRenderingContext2D) {
   }
@@ -113,6 +117,9 @@ class Flux implements Tile {
   }
   isAir() {
     return false;
+  }
+  isEdible() {
+    return this.isFlux() || this.isAir();
   }
   color(g: CanvasRenderingContext2D) {
     g.fillStyle = "#ccffcc";
@@ -160,6 +167,9 @@ class Unbreakable implements Tile {
   isAir() {
     return false;
   }
+  isEdible() {
+    return this.isFlux() || this.isAir();
+  }
   color(g: CanvasRenderingContext2D) {
     g.fillStyle = "#999999";
   }
@@ -206,6 +216,9 @@ class Player implements Tile {
   isAir() {
     return false;
   }
+  isEdible() {
+    return this.isFlux() || this.isAir();
+  }
   color(g: CanvasRenderingContext2D) {
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
@@ -248,6 +261,9 @@ class Stone implements Tile {
   }
   isAir() {
     return false;
+  }
+  isEdible() {
+    return this.isFlux() || this.isAir();
   }
   color(g: CanvasRenderingContext2D) {
     g.fillStyle = "#0000cc";
@@ -295,6 +311,9 @@ class FallingStone implements Tile {
   isAir() {
     return false;
   }
+  isEdible() {
+    return this.isFlux() || this.isAir();
+  }
   color(g: CanvasRenderingContext2D) {
     g.fillStyle = "#0000cc";
   }
@@ -340,6 +359,9 @@ class Box implements Tile {
   }
   isAir() {
     return false;
+  }
+  isEdible() {
+    return this.isFlux() || this.isAir();
   }
   color(g: CanvasRenderingContext2D) {
     g.fillStyle = "#8b4513";
@@ -387,6 +409,9 @@ class FallingBox implements Tile {
   isAir() {
     return false;
   }
+  isEdible() {
+    return this.isFlux() || this.isAir();
+  }
   color(g: CanvasRenderingContext2D) {
     g.fillStyle = "#8b4513";
   }
@@ -432,6 +457,9 @@ class Key1 implements Tile {
   }
   isAir() {
     return false;
+  }
+  isEdible() {
+    return this.isFlux() || this.isAir();
   }
   color(g: CanvasRenderingContext2D) {
     g.fillStyle = "#ffcc00";
@@ -479,6 +507,9 @@ class Lock1 implements Tile {
   isAir() {
     return false;
   }
+  isEdible() {
+    return this.isFlux() || this.isAir();
+  }
   color(g: CanvasRenderingContext2D) {
     g.fillStyle = "#ffcc00";
   }
@@ -525,6 +556,9 @@ class Key2 implements Tile {
   isAir() {
     return false;
   }
+  isEdible() {
+    return this.isFlux() || this.isAir();
+  }
   color(g: CanvasRenderingContext2D) {
     g.fillStyle = "#00ccff";
   }
@@ -570,6 +604,9 @@ class Lock2 implements Tile {
   }
   isAir() {
     return false;
+  }
+  isEdible() {
+    return this.isFlux() || this.isAir();
   }
   color(g: CanvasRenderingContext2D) {
     g.fillStyle = "#00ccff";
