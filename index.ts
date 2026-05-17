@@ -346,6 +346,10 @@ class Stone implements Tile {
 }
 
 class Box implements Tile {
+  private falling: boolean;
+  constructor() {
+    this.falling = false;
+  }
   isFlux() {
     return false;
   }
@@ -371,7 +375,7 @@ class Box implements Tile {
     return true;
   }
   isFallingBox() {
-    return false;
+    return this.falling;
   }
   isKey1() {
     return false;
@@ -414,6 +418,10 @@ class Box implements Tile {
 }
 
 class FallingBox implements Tile {
+  private falling: boolean;
+  constructor() {
+    this.falling = true;
+  }
   isFlux() {
     return false;
   }
@@ -433,7 +441,7 @@ class FallingBox implements Tile {
     return false;
   }
   isFallingBox() {
-    return true;
+    return this.falling;
   }
   isStony() {
     return false;
