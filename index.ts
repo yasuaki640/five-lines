@@ -603,10 +603,10 @@ function transformTile(tile: RawTile) {
     case RawTile.BOX: return new Box(new Resting());
     case RawTile.FALLING_BOX: return new Box(new Falling());
     case RawTile.FLUX: return new Flux();
-    case RawTile.KEY1: return new KeyTile(new KeyConfiguration("#ffcc00", true, new RemoveLock1()));
-    case RawTile.LOCK1: return new LockTile(new KeyConfiguration("#ffcc00", true, new RemoveLock1()));
-    case RawTile.KEY2: return new KeyTile(new KeyConfiguration("#00ccff", false, new RemoveLock2()));
-    case RawTile.LOCK2: return new LockTile(new KeyConfiguration("#00ccff", false, new RemoveLock2()));
+    case RawTile.KEY1: return new KeyTile(YELLOW_KEY);
+    case RawTile.LOCK1: return new LockTile(YELLOW_KEY);
+    case RawTile.KEY2: return new KeyTile(BLUE_KEY);
+    case RawTile.LOCK2: return new LockTile(BLUE_KEY);
     default: assertExhausted(tile);
   }
 }
@@ -648,6 +648,11 @@ class KeyConfiguration {
   is1() { return this._1; }
   getRemoveStrategy() { return this.removeStrategy; }
 }
+
+const YELLOW_KEY =
+  new KeyConfiguration("#ffcc00", true, new RemoveLock1());
+const BLUE_KEY =
+  new KeyConfiguration("#00ccff", false, new RemoveLock2());
 
 function remove(shouldRemove: RemoveStrategy) {
   for (let y = 0; y < map.length; y++) {
