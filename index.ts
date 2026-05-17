@@ -20,6 +20,7 @@ enum RawTile {
 interface FallingState {
   isFalling(): boolean;
   isResting(): boolean;
+  moveHorizontal(tile: Tile, dx: number): void;
 }
 class Falling implements FallingState {
   isFalling() {
@@ -28,6 +29,8 @@ class Falling implements FallingState {
   isResting() {
     return false;
   }
+  moveHorizontal(tile: Tile, dx: number) {
+  }
 }
 class Resting implements FallingState {
   isFalling() {
@@ -35,6 +38,13 @@ class Resting implements FallingState {
   }
   isResting() {
     return true;
+  }
+  moveHorizontal(tile: Tile, dx: number) {
+    if (map[playery][playerx + dx + dx].isAir()
+      && !map[playery + 1][playerx + dx].isAir()) {
+      map[playery][playerx + dx + dx] = tile;
+      moveToTile(playerx + dx, playery);
+    }
   }
 }
 
@@ -348,14 +358,7 @@ class Stone implements Tile {
     return this.isStone() || this.isBox();
   }
   moveHorizontal(dx: number) {
-    if (this.isFallingStone() === false) {
-      if (map[playery][playerx + dx + dx].isAir()
-        && !map[playery + 1][playerx + dx].isAir()) {
-        map[playery][playerx + dx + dx] = this;
-        moveToTile(playerx + dx, playery);
-      }
-    } else if (this.isFallingStone() === true) {
-    }
+    this.falling.moveHorizontal(this, dx);
   }
   color(g: CanvasRenderingContext2D) {
     g.fillStyle = "#0000cc";
@@ -418,14 +421,7 @@ class Box implements Tile {
     return this.isStone() || this.isBox();
   }
   moveHorizontal(dx: number) {
-    if (this.isFallingBox() === false) {
-      if (map[playery][playerx + dx + dx].isAir()
-        && !map[playery + 1][playerx + dx].isAir()) {
-        map[playery][playerx + dx + dx] = this;
-        moveToTile(playerx + dx, playery);
-      }
-    } else if (this.isFallingBox() === true) {
-    }
+    this.falling.moveHorizontal(this, dx);
   }
   color(g: CanvasRenderingContext2D) {
     g.fillStyle = "#8b4513";
