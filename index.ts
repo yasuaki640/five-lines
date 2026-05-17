@@ -346,9 +346,7 @@ class Stone implements Tile {
 }
 
 class Box implements Tile {
-  private falling: boolean;
-  constructor() {
-    this.falling = false;
+  constructor(private falling: boolean) {
   }
   isFlux() {
     return false;
@@ -418,9 +416,7 @@ class Box implements Tile {
 }
 
 class FallingBox implements Tile {
-  private falling: boolean;
-  constructor() {
-    this.falling = true;
+  constructor(private falling: boolean) {
   }
   isFlux() {
     return false;
@@ -836,8 +832,8 @@ function transformTile(tile: RawTile) {
     case RawTile.UNBREAKABLE: return new Unbreakable();
     case RawTile.STONE: return new Stone(false);
     case RawTile.FALLING_STONE: return new Stone(true);
-    case RawTile.BOX: return new Box();
-    case RawTile.FALLING_BOX: return new FallingBox();
+    case RawTile.BOX: return new Box(false);
+    case RawTile.FALLING_BOX: return new FallingBox(true);
     case RawTile.FLUX: return new Flux();
     case RawTile.KEY1: return new Key1();
     case RawTile.LOCK1: return new Lock1();
@@ -916,12 +912,12 @@ function updateTitle(y: number, x: number) {
     map[y + 1][x] = new Stone(true);
     map[y][x] = new Air();
   } else if (map[y][x].isBoxy() && map[y + 1][x].isAir()) {
-    map[y + 1][x] = new FallingBox();
+    map[y + 1][x] = new FallingBox(true);
     map[y][x] = new Air();
   } else if (map[y][x].isFallingStone()) {
     map[y][x] = new Stone(false);
   } else if (map[y][x].isFallingBox()) {
-    map[y][x] = new Box();
+    map[y][x] = new Box(false);
   }
 }
 
