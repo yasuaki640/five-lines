@@ -48,6 +48,9 @@ class Resting implements FallingState {
   }
 }
 
+class FallStrategy {
+}
+
 interface Tile {
   isFlux(): boolean;
   isUnbreakable(): boolean;
@@ -295,7 +298,9 @@ class Player implements Tile {
 }
 
 class Stone implements Tile {
+  private fallStrategy: FallStrategy;
   constructor(private falling: FallingState) {
+    this.fallStrategy = new FallStrategy();
   }
   isFlux() {
     return false;
@@ -364,7 +369,9 @@ class Stone implements Tile {
 }
 
 class Box implements Tile {
+  private fallStrategy: FallStrategy;
   constructor(private falling: FallingState) {
+    this.fallStrategy = new FallStrategy();
   }
   isFlux() {
     return false;
