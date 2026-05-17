@@ -395,10 +395,12 @@ class Box implements Tile {
     return this.isStone() || this.isBox();
   }
   moveHorizontal(dx: number) {
-    if (map[playery][playerx + dx + dx].isAir()
-      && !map[playery + 1][playerx + dx].isAir()) {
-      map[playery][playerx + dx + dx] = this;
-      moveToTile(playerx + dx, playery);
+    if (true) {
+      if (map[playery][playerx + dx + dx].isAir()
+        && !map[playery + 1][playerx + dx].isAir()) {
+        map[playery][playerx + dx + dx] = this;
+        moveToTile(playerx + dx, playery);
+      }
     }
   }
   color(g: CanvasRenderingContext2D) {
@@ -460,6 +462,8 @@ class FallingBox implements Tile {
     return this.isStone() || this.isBox();
   }
   moveHorizontal(dx: number) {
+    if (true) {
+    }
   }
   color(g: CanvasRenderingContext2D) {
     g.fillStyle = "#8b4513";
