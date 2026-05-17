@@ -992,13 +992,9 @@ function update() {
 function updateMap() {
   for (let y = map.length - 1; y >= 0; y--) {
     for (let x = 0; x < map[y].length; x++) {
-      updateTitle(y, x);
+      map[y][x].update(x, y);
     }
   }
-}
-
-function updateTitle(y: number, x: number) {
-  map[y][x].update(x, y);
 }
 
 function handleInputs() {
