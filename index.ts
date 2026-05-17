@@ -452,8 +452,7 @@ class KeyTile implements Tile {
 class LockTile implements Tile {
   constructor(
     private color: string,
-    private lock1: boolean,
-    private lock2: boolean) { }
+    private lock1: boolean) { }
   isFlux() {
     return false;
   }
@@ -479,7 +478,7 @@ class LockTile implements Tile {
     return false;
   }
   isLock2() {
-    return this.lock2;
+    return !this.lock1;
   }
   isAir() {
     return false;
@@ -609,9 +608,9 @@ function transformTile(tile: RawTile) {
     case RawTile.FALLING_BOX: return new Box(new Falling());
     case RawTile.FLUX: return new Flux();
     case RawTile.KEY1: return new KeyTile("#ffcc00", new RemoveLock1());
-    case RawTile.LOCK1: return new LockTile("#ffcc00", true, false);
+    case RawTile.LOCK1: return new LockTile("#ffcc00", true);
     case RawTile.KEY2: return new KeyTile("#00ccff", new RemoveLock2());
-    case RawTile.LOCK2: return new LockTile("#00ccff", false, true);
+    case RawTile.LOCK2: return new LockTile("#00ccff", false);
     default: assertExhausted(tile);
   }
 }
