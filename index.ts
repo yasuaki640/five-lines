@@ -331,6 +331,7 @@ class Stone implements Tile {
         map[playery][playerx + dx + dx] = this;
         moveToTile(playerx + dx, playery);
       }
+    } else if (this.isFallingStone() === true) {
     }
   }
   color(g: CanvasRenderingContext2D) {
@@ -392,7 +393,13 @@ class FallingStone implements Tile {
     return this.isStone() || this.isBox();
   }
   moveHorizontal(dx: number) {
-    if (this.isFallingStone() === true) {
+    if (this.isFallingStone() === false) {
+      if (map[playery][playerx + dx + dx].isAir()
+        && !map[playery + 1][playerx + dx].isAir()) {
+        map[playery][playerx + dx + dx] = this;
+        moveToTile(playerx + dx, playery);
+      }
+    } else if (this.isFallingStone() === true) {
     }
   }
   color(g: CanvasRenderingContext2D) {
