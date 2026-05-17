@@ -72,6 +72,7 @@ interface Tile {
   rest(): void;
   isFalling(): boolean;
   canFall(): boolean;
+  update(x: number, y: number): void;
 }
 
 class Air implements Tile {
@@ -139,6 +140,8 @@ class Air implements Tile {
   }
   canFall() {
     return false;
+  }
+  update(x: number, y: number) {
   }
 }
 
@@ -211,6 +214,8 @@ class Flux implements Tile {
   canFall() {
     return false;
   }
+  update(x: number, y: number) {
+  }
 }
 
 class Unbreakable implements Tile {
@@ -281,6 +286,8 @@ class Unbreakable implements Tile {
   canFall() {
     return false;
   }
+  update(x: number, y: number) {
+  }
 }
 
 class Player implements Tile {
@@ -347,6 +354,8 @@ class Player implements Tile {
   }
   canFall() {
     return false;
+  }
+  update(x: number, y: number) {
   }
 }
 
@@ -423,6 +432,15 @@ class Stone implements Tile {
   canFall() {
     return true;
   }
+  update(x: number, y: number) {
+    if (map[y + 1][x].isAir()) {
+      this.drop();
+      map[y + 1][x] = this;
+      map[y][x] = new Air();
+    } else if (this.isFalling()) {
+      this.rest();
+    }
+  }
 }
 
 class Box implements Tile {
@@ -498,6 +516,15 @@ class Box implements Tile {
   canFall() {
     return true;
   }
+  update(x: number, y: number) {
+    if (map[y + 1][x].isAir()) {
+      this.drop();
+      map[y + 1][x] = this;
+      map[y][x] = new Air();
+    } else if (this.isFalling()) {
+      this.rest();
+    }
+  }
 }
 
 class Key1 implements Tile {
@@ -570,6 +597,8 @@ class Key1 implements Tile {
   canFall() {
     return false;
   }
+  update(x: number, y: number) {
+  }
 }
 
 class Lock1 implements Tile {
@@ -639,6 +668,8 @@ class Lock1 implements Tile {
   }
   canFall() {
     return false;
+  }
+  update(x: number, y: number) {
   }
 }
 
@@ -712,6 +743,8 @@ class Key2 implements Tile {
   canFall() {
     return false;
   }
+  update(x: number, y: number) {
+  }
 }
 
 class Lock2 implements Tile {
@@ -781,6 +814,8 @@ class Lock2 implements Tile {
   }
   canFall() {
     return false;
+  }
+  update(x: number, y: number) {
   }
 }
 
@@ -963,13 +998,7 @@ function updateMap() {
 }
 
 function updateTitle(y: number, x: number) {
-  if (map[y][x].canFall() && map[y + 1][x].isAir()) {
-    map[y][x].drop();
-    map[y + 1][x] = map[y][x];
-    map[y][x] = new Air();
-  } else if (map[y][x].isFalling()) {
-    map[y][x].rest();
-  }
+  map[y][x].update(x, y);
 }
 
 function handleInputs() {
