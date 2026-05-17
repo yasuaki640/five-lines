@@ -735,8 +735,7 @@ class RemoveLock1 implements RemoveStrategy {
   }
 }
 
-function removeLock1() {
-  let shouldRemove = new RemoveLock1();
+function remove(shouldRemove: RemoveStrategy) {
   for (let y = 0; y < map.length; y++) {
     for (let x = 0; x < map[y].length; x++) {
       if (shouldRemove.check(map[y][x])) {
@@ -744,6 +743,11 @@ function removeLock1() {
       }
     }
   }
+}
+
+function removeLock1() {
+  let shouldRemove = new RemoveLock1();
+  remove(shouldRemove);
 }
 
 function removeLock2() {
