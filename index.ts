@@ -433,7 +433,7 @@ class Key1 implements Tile {
     return this.isStone() || this.isBox();
   }
   moveHorizontal(dx: number) {
-    removeLock1();
+    remove(new RemoveLock1());
     moveToTile(playerx + dx, playery);
   }
   color(g: CanvasRenderingContext2D) {
@@ -535,7 +535,7 @@ class Key2 implements Tile {
     return this.isStone() || this.isBox();
   }
   moveHorizontal(dx: number) {
-    removeLock2();
+    remove(new RemoveLock2());
     moveToTile(playerx + dx, playery);
   }
   color(g: CanvasRenderingContext2D) {
@@ -735,25 +735,16 @@ class RemoveLock1 implements RemoveStrategy {
   }
 }
 
+class RemoveLock2 implements RemoveStrategy {
+  check(tile: Tile) {
+    return tile.isLock2();
+  }
+}
+
 function remove(shouldRemove: RemoveStrategy) {
   for (let y = 0; y < map.length; y++) {
     for (let x = 0; x < map[y].length; x++) {
       if (shouldRemove.check(map[y][x])) {
-        map[y][x] = new Air();
-      }
-    }
-  }
-}
-
-function removeLock1() {
-  let shouldRemove = new RemoveLock1();
-  remove(shouldRemove);
-}
-
-function removeLock2() {
-  for (let y = 0; y < map.length; y++) {
-    for (let x = 0; x < map[y].length; x++) {
-      if (map[y][x].isLock2()) {
         map[y][x] = new Air();
       }
     }
@@ -771,10 +762,10 @@ function moveVertical(dy: number) {
   if (map[playery + dy][playerx].isFlux() || map[playery + dy][playerx].isAir()) {
     moveToTile(playerx, playery + dy);
   } else if (map[playery + dy][playerx].isKey1()) {
-    removeLock1();
+    remove(new RemoveLock1());
     moveToTile(playerx, playery + dy);
   } else if (map[playery + dy][playerx].isKey2()) {
-    removeLock2();
+    remove(new RemoveLock2());
     moveToTile(playerx, playery + dy);
   }
 }
