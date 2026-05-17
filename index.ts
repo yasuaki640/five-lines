@@ -68,6 +68,8 @@ interface Tile {
   moveHorizontal(dx: number): void;
   color(g: CanvasRenderingContext2D): void;
   draw(g: CanvasRenderingContext2D, x: number, y: number): void;
+  drop(): void;
+  rest(): void;
 }
 
 class Air implements Tile {
@@ -125,6 +127,10 @@ class Air implements Tile {
   color(g: CanvasRenderingContext2D) {
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
+  }
+  drop() {
+  }
+  rest() {
   }
 }
 
@@ -187,6 +193,10 @@ class Flux implements Tile {
     g.fillStyle = "#ccffcc";
     g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
+  drop() {
+  }
+  rest() {
+  }
 }
 
 class Unbreakable implements Tile {
@@ -247,6 +257,10 @@ class Unbreakable implements Tile {
     g.fillStyle = "#999999";
     g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
+  drop() {
+  }
+  rest() {
+  }
 }
 
 class Player implements Tile {
@@ -303,6 +317,10 @@ class Player implements Tile {
   color(g: CanvasRenderingContext2D) {
   }
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
+  }
+  drop() {
+  }
+  rest() {
   }
 }
 
@@ -367,6 +385,12 @@ class Stone implements Tile {
     g.fillStyle = "#0000cc";
     g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
+  drop() {
+    this.falling = new Falling();
+  }
+  rest() {
+    this.falling = new Resting();
+  }
 }
 
 class Box implements Tile {
@@ -430,6 +454,12 @@ class Box implements Tile {
     g.fillStyle = "#8b4513";
     g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
+  drop() {
+    this.falling = new Falling();
+  }
+  rest() {
+    this.falling = new Resting();
+  }
 }
 
 class Key1 implements Tile {
@@ -492,6 +522,10 @@ class Key1 implements Tile {
     g.fillStyle = "#ffcc00";
     g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
+  drop() {
+  }
+  rest() {
+  }
 }
 
 class Lock1 implements Tile {
@@ -551,6 +585,10 @@ class Lock1 implements Tile {
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
     g.fillStyle = "#ffcc00";
     g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  }
+  drop() {
+  }
+  rest() {
   }
 }
 
@@ -614,6 +652,10 @@ class Key2 implements Tile {
     g.fillStyle = "#00ccff";
     g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
+  drop() {
+  }
+  rest() {
+  }
 }
 
 class Lock2 implements Tile {
@@ -673,6 +715,10 @@ class Lock2 implements Tile {
   draw(g: CanvasRenderingContext2D, x: number, y: number) {
     g.fillStyle = "#00ccff";
     g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  }
+  drop() {
+  }
+  rest() {
   }
 }
 
