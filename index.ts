@@ -53,16 +53,12 @@ interface Tile {
   isUnbreakable(): boolean;
   isPlayer(): boolean;
   isStone(): boolean;
-  isFallingStone(): boolean;
   isBox(): boolean;
-  isFallingBox(): boolean;
   isKey1(): boolean;
   isLock1(): boolean;
   isKey2(): boolean;
   isLock2(): boolean;
   isAir(): boolean;
-  isStony(): boolean;
-  isBoxy(): boolean;
   isEdible(): boolean;
   isPushable(): boolean;
   moveHorizontal(dx: number): void;
@@ -71,7 +67,6 @@ interface Tile {
   drop(): void;
   rest(): void;
   isFalling(): boolean;
-  canFall(): boolean;
   update(x: number, y: number): void;
 }
 
@@ -88,13 +83,7 @@ class Air implements Tile {
   isStone() {
     return false;
   }
-  isFallingStone() {
-    return false;
-  }
   isBox() {
-    return false;
-  }
-  isFallingBox() {
     return false;
   }
   isKey1() {
@@ -111,12 +100,6 @@ class Air implements Tile {
   }
   isAir() {
     return true;
-  }
-  isStony() {
-    return false;
-  }
-  isBoxy() {
-    return false;
   }
   isEdible() {
     return this.isFlux() || this.isAir();
@@ -136,9 +119,6 @@ class Air implements Tile {
   rest() {
   }
   isFalling() {
-    return false;
-  }
-  canFall() {
     return false;
   }
   update(x: number, y: number) {
@@ -158,13 +138,7 @@ class Flux implements Tile {
   isStone() {
     return false;
   }
-  isFallingStone() {
-    return false;
-  }
   isBox() {
-    return false;
-  }
-  isFallingBox() {
     return false;
   }
   isKey1() {
@@ -180,12 +154,6 @@ class Flux implements Tile {
     return false;
   }
   isAir() {
-    return false;
-  }
-  isStony() {
-    return false;
-  }
-  isBoxy() {
     return false;
   }
   isEdible() {
@@ -211,9 +179,6 @@ class Flux implements Tile {
   isFalling() {
     return false;
   }
-  canFall() {
-    return false;
-  }
   update(x: number, y: number) {
   }
 }
@@ -225,25 +190,13 @@ class Unbreakable implements Tile {
   isUnbreakable() {
     return true;
   }
-  isStony() {
-    return false;
-  }
-  isBoxy() {
-    return false;
-  }
   isPlayer() {
     return false;
   }
   isStone() {
     return false;
   }
-  isFallingStone() {
-    return false;
-  }
   isBox() {
-    return false;
-  }
-  isFallingBox() {
     return false;
   }
   isKey1() {
@@ -283,9 +236,6 @@ class Unbreakable implements Tile {
   isFalling() {
     return false;
   }
-  canFall() {
-    return false;
-  }
   update(x: number, y: number) {
   }
 }
@@ -300,22 +250,10 @@ class Player implements Tile {
   isPlayer() {
     return true;
   }
-  isStony() {
-    return false;
-  }
-  isBoxy() {
-    return false;
-  }
   isStone() {
     return false;
   }
-  isFallingStone() {
-    return false;
-  }
   isBox() {
-    return false;
-  }
-  isFallingBox() {
     return false;
   }
   isKey1() {
@@ -350,9 +288,6 @@ class Player implements Tile {
   rest() {
   }
   isFalling() {
-    return false;
-  }
-  canFall() {
     return false;
   }
   update(x: number, y: number) {
@@ -374,19 +309,7 @@ class Stone implements Tile {
   isStone() {
     return true;
   }
-  isStony() {
-    return true;
-  }
-  isBoxy() {
-    return false;
-  }
-  isFallingStone() {
-    return this.falling.isFalling();
-  }
   isBox() {
-    return false;
-  }
-  isFallingBox() {
     return false;
   }
   isKey1() {
@@ -428,9 +351,6 @@ class Stone implements Tile {
   }
   isFalling() {
     return this.falling.isFalling();
-  }
-  canFall() {
-    return true;
   }
   update(x: number, y: number) {
     if (map[y + 1][x].isAir()) {
@@ -458,20 +378,8 @@ class Box implements Tile {
   isStone() {
     return false;
   }
-  isFallingStone() {
-    return false;
-  }
   isBox() {
     return true;
-  }
-  isStony() {
-    return false;
-  }
-  isBoxy() {
-    return true;
-  }
-  isFallingBox() {
-    return this.falling.isFalling();
   }
   isKey1() {
     return false;
@@ -513,9 +421,6 @@ class Box implements Tile {
   isFalling() {
     return this.falling.isFalling();
   }
-  canFall() {
-    return true;
-  }
   update(x: number, y: number) {
     if (map[y + 1][x].isAir()) {
       this.drop();
@@ -540,23 +445,11 @@ class Key1 implements Tile {
   isStone() {
     return false;
   }
-  isFallingStone() {
-    return false;
-  }
   isBox() {
-    return false;
-  }
-  isFallingBox() {
     return false;
   }
   isKey1() {
     return true;
-  }
-  isStony() {
-    return false;
-  }
-  isBoxy() {
-    return false;
   }
   isLock1() {
     return false;
@@ -594,9 +487,6 @@ class Key1 implements Tile {
   isFalling() {
     return false;
   }
-  canFall() {
-    return false;
-  }
   update(x: number, y: number) {
   }
 }
@@ -614,13 +504,7 @@ class Lock1 implements Tile {
   isStone() {
     return false;
   }
-  isFallingStone() {
-    return false;
-  }
   isBox() {
-    return false;
-  }
-  isFallingBox() {
     return false;
   }
   isKey1() {
@@ -628,12 +512,6 @@ class Lock1 implements Tile {
   }
   isLock1() {
     return true;
-  }
-  isStony() {
-    return false;
-  }
-  isBoxy() {
-    return false;
   }
   isKey2() {
     return false;
@@ -666,9 +544,6 @@ class Lock1 implements Tile {
   isFalling() {
     return false;
   }
-  canFall() {
-    return false;
-  }
   update(x: number, y: number) {
   }
 }
@@ -686,13 +561,7 @@ class Key2 implements Tile {
   isStone() {
     return false;
   }
-  isFallingStone() {
-    return false;
-  }
   isBox() {
-    return false;
-  }
-  isFallingBox() {
     return false;
   }
   isKey1() {
@@ -703,12 +572,6 @@ class Key2 implements Tile {
   }
   isKey2() {
     return true;
-  }
-  isStony() {
-    return false;
-  }
-  isBoxy() {
-    return false;
   }
   isLock2() {
     return false;
@@ -740,9 +603,6 @@ class Key2 implements Tile {
   isFalling() {
     return false;
   }
-  canFall() {
-    return false;
-  }
   update(x: number, y: number) {
   }
 }
@@ -760,13 +620,7 @@ class Lock2 implements Tile {
   isStone() {
     return false;
   }
-  isFallingStone() {
-    return false;
-  }
   isBox() {
-    return false;
-  }
-  isFallingBox() {
     return false;
   }
   isKey1() {
@@ -780,12 +634,6 @@ class Lock2 implements Tile {
   }
   isLock2() {
     return true;
-  }
-  isStony() {
-    return false;
-  }
-  isBoxy() {
-    return false;
   }
   isAir() {
     return false;
@@ -810,9 +658,6 @@ class Lock2 implements Tile {
   rest() {
   }
   isFalling() {
-    return false;
-  }
-  canFall() {
     return false;
   }
   update(x: number, y: number) {
